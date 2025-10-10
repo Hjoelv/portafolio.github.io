@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- HEAD: metadatos y estilos para el portafolio de Henry J. Vélez Torres -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Henry J. Vélez Torres — Portafolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0f0d;--surface:#111513;--text:#e7efe9;--muted:#a7c3b5;--brand:#35d07f;--brand-2:#2db86f;--chip:#16261e;--line:#1a2c23;--radius:16px;--shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1120px;margin:0 auto;padding:24px}
+    header{display:flex;gap:20px;align-items:center;padding:18px 0 10px}
+    .avatar{width:96px;height:96px;border-radius:50%;overflow:hidden;border:2px solid #214b38;box-shadow:var(--shadow)}
+    .avatar .wrap{position:relative;width:100%;height:100%;border-radius:50%;overflow:hidden;border:2px solid rgba(53,208,127,.6);box-shadow:0 0 20px rgba(53,208,127,.45);animation:glow 3s ease-in-out infinite alternate}
+    .avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%;opacity:0;transition:opacity 2s ease-in-out}
+    .avatar img.active{opacity:1}
+    @keyframes glow{from{box-shadow:0 0 8px rgba(53,208,127,.35)}to{box-shadow:0 0 22px rgba(53,208,127,.85)}}
+    .title h1{margin:0;font-weight:800}
+    .badge-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .badge{display:inline-flex;align-items:center;gap:8px;background:var(--chip);border:1px solid var(--line);padding:6px 10px;border-radius:999px;font-size:12px}
+    .grid{display:grid;grid-template-columns:1fr;gap:18px}
+    section{background:var(--surface);border:1px solid var(--line);padding:18px;border-radius:var(--radius);box-shadow:var(--shadow)}
+    section h2{margin:0 0 12px;font-size:20px}
+    .chips{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{background:var(--chip);border:1px solid #20332a;color:#d2ead9;padding:6px 10px;border-radius:999px;font-size:12px}
+    .row{display:flex;gap:12px;align-items:flex-start}
+    .icon{width:26px;height:26px;display:grid;place-items:center;background:#0f1713;border:1px solid var(--line);border-radius:8px}
+    .item{display:grid;gap:6px}
+    .item small{color:var(--muted)}
+    .right{margin-left:auto;color:var(--muted);font-size:12px}
+    footer{opacity:.7;font-size:12px;text-align:center;padding:30px 0 60px}
+    @media(min-width:980px){.grid{grid-template-columns:2fr 1.1fr}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- CABECERA con avatar alternando (usa assets/photo.jpg y assets/avatar.jpg) -->
+    <header>
+      <div class="avatar" aria-hidden="true">
+        <div class="wrap">
+          <img id="img1" class="active" alt="Foto real" src="./assets/photo.jpg" />
+          <img id="img2" alt="Avatar" src="./assets/avatar.jpg" />
+        </div>
+      </div>
+      <div class="title">
+        <h1>Henry J. Vélez Torres</h1>
+        <div class="badge-row">
+          <span class="badge">📍 Puerto Rico</span>
+          <!-- Mailto para enviar correo al presionar -->
+          <a class="badge" href="mailto:henrytorres633@gmail.com">✉️ henrytorres633@gmail.com</a>
+          <a class="badge" href="https://github.com/" target="_blank" rel="noreferrer">🐙 GitHub</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="grid">
+      <!-- SECCIÓN SOBRE MÍ (texto del usuario sin cambios) -->
+      <section>
+        <h2>Sobre mí</h2>
+        <p>Futuro progamador fanatico de la tecnologia que quiere salir adelante y ejercer lo que le de verdad le gusta.</p>
+      </section>
+
+      <!-- SECCIÓN TECNOLOGÍAS (texto del usuario sin cambios) -->
+      <section>
+        <h2>Tecnologías</h2>
+        <div class="chips">
+          <span class="chip">C++</span><span class="chip">SQL Server</span><span class="chip">Windows Server</span><span class="chip">HTML</span>
+        </div>
+      </section>
+
+      <!-- SECCIÓN EXPERIENCIA (texto del usuario sin cambios) -->
+      <section>
+        <h2>Experiencia</h2>
+        <p><strong>Sistema de Salud Episcopal San Lucas (Data center) — Práctica (2025):
+        </strong> Aprendi a realizar sustituciones de maquinas. 
+          Configuracion de equipo y de usuarios referentes. 
+          Ademas, se trabajaran tickets de servicio tecnico mediante la plataforma de space works los cuales se enfatizan en resolucion de problemas asociados a los equipos, usuarios y la red.</p>
+        <p><strong>Proyectos personales (2021–Actualidad):</strong> Programas que llegue a realizar durante mi transcurso en la universidad.</p>
+      </section>
+
+      <!-- SECCIÓN PROYECTOS (texto del usuario sin cambios) -->
+      <section>
+        <h2>Proyectos</h2>
+        <ul>
+          <li><strong>Supply Train (ST):</strong> App de delivery por suscripción en Wix.</li>
+          <li><strong>Scheduler Restaurante:</strong> Simulación de turnos y salarios en C++.</li>
+          <li><strong>Gizmo Fusion:</strong> Canal automatizado de YouTube tech.</li>
+        </ul>
+      </section>
+
+      <!-- SECCIÓN CONTACTO (mailto extra por claridad) -->
+      <section id="contacto">
+        <h2>Contacto</h2>
+        <p>📧 <a href="mailto:henrytorres633@gmail.com">henrytorres633@gmail.com</a></p>
+        <p><a href="https://github.com/">GitHub</a> </p>
+      </section>
+    </div>
+
+    <footer>© <span id="year"></span> Henry J. Vélez Torres — Portafolio</footer>
+  </div>
+
+  <script>
+    // Alterna avatar/foto cada 8 segundos
+    const img1 = document.getElementById('img1');
+    const img2 = document.getElementById('img2');
+    let showFirst = true;
+    setInterval(()=>{
+      if (showFirst){ img1.classList.remove('active'); img2.classList.add('active'); }
+      else { img2.classList.remove('active'); img1.classList.add('active'); }
+      showFirst = !showFirst;
+    }, 8000);
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
