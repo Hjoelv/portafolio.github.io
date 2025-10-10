@@ -7,55 +7,76 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#0b0b0b;--surface:#151515;--text:#f1f1f1;--muted:#cfcfcf;
-      --accent:#ff3b3b;--accent-2:#ff5b5b;--line:#272727;--chip:#1d1d1d;
-      --radius:18px;--shadow:0 12px 36px rgba(0,0,0,.35);--gap:22px;
+      --bg:#0b0b0b;
+      --surface:#151515;
+      --text:#f1f1f1;
+      --muted:#cfcfcf;
+      --accent:#ff3b3b;
+      --accent-2:#ff5b5b;
+      --line:rgba(255,255,255,.06);
+      --card:rgba(255,255,255,.035);
+      --chip:rgba(255,255,255,.06);
+      --radius:18px;
+      --shadow:0 12px 36px rgba(0,0,0,.35);
+      --gap:28px;
+      --max:1180px;
     }
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif}
     a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
-    .container{max-width:1160px;margin:0 auto;padding:28px}
-    header{display:flex;gap:24px;align-items:center;padding:10px 0 0}
+    .container{max-width:var(--max);margin:0 auto;padding:clamp(20px,4vw,30px)}
+
+    header{display:flex;gap:24px;align-items:center;padding-top:6px}
     .avatar{width:160px;height:160px;border-radius:50%;overflow:hidden;border:2px solid #3a3a3a;box-shadow:var(--shadow)}
     .avatar .wrap{position:relative;width:100%;height:100%;border-radius:50%;overflow:hidden;border:2px solid rgba(255,59,59,.6);box-shadow:0 0 26px rgba(255,59,59,.3);animation:pulse 3s ease-in-out infinite alternate}
     .avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%;opacity:0;transition:opacity 1.8s ease-in-out}
     .avatar img.active{opacity:1}
-    @keyframes pulse{from{box-shadow:0 0 12px rgba(255,59,59,.25)}to{box-shadow:0 0 30px rgba(255,59,59,.65)}}
-    .title h1{margin:0 0 8px 0;font-weight:800;font-size:clamp(24px,3vw,36px)}
-    .subtitle{margin:0;color:var(--muted)}
+    @keyframes pulse{from{box-shadow:0 0 14px rgba(255,59,59,.25)}to{box-shadow:0 0 34px rgba(255,59,59,.55)}}
+
+    .title h1{margin:0 0 8px 0;font-weight:800;font-size:clamp(24px,3.2vw,36px)}
+    .subtitle{margin:0;color:var(--muted);font-size:clamp(14px,2vw,16px)}
     .badge-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
     .badge{display:inline-flex;align-items:center;gap:8px;background:var(--chip);border:1px solid var(--line);padding:8px 12px;border-radius:999px;font-size:13px}
     .cta-row{margin-top:14px;display:flex;gap:12px;flex-wrap:wrap}
     .btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#000;font-weight:700;border:none;border-radius:999px;padding:12px 16px;text-decoration:none;box-shadow:0 8px 18px rgba(255,59,59,.25);transition:transform .15s ease, box-shadow .15s ease, background .15s ease}
     .btn:hover{background:var(--accent-2);transform:translateY(-1px);box-shadow:0 10px 24px rgba(255,59,59,.35)}
-    .grid{display:grid;grid-template-columns:1fr;gap:var(--gap);margin-top:26px}
-    section{background:var(--surface);border:1px solid var(--line);padding:20px;border-radius:var(--radius);box-shadow:var(--shadow)}
-    section h2{margin:0 0 12px;font-size:20px;color:#fff;letter-spacing:.2px}
+
+    .stack{display:grid;gap:var(--gap);margin-top:clamp(20px,4vw,32px)}
+    section{background:var(--card);border:1px solid var(--line);padding:clamp(16px,3vw,24px);border-radius:var(--radius);box-shadow:var(--shadow);backdrop-filter:blur(2px)}
+    section h2{margin:0 0 12px;font-size:clamp(18px,2.4vw,22px);color:#fff}
+
     .chips{display:flex;flex-wrap:wrap;gap:10px}
     .chip{background:var(--chip);border:1px solid var(--line);color:#e9e9e9;padding:8px 12px;border-radius:999px;font-size:12px}
     ul{margin:0;padding-left:20px;line-height:1.75}
+
     .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
-    .thumb{background:#101010;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+    .thumb{background:rgba(255,255,255,.025);border:1px solid var(--line);border-radius:14px;overflow:hidden}
     .thumb img{width:100%;height:140px;object-fit:cover}
     .thumb .tx{padding:10px;color:#dedede}
     .tx .t{font-weight:700}
     .tx .s{color:#bdbdbd;font-size:12px}
-    footer{opacity:.7;font-size:12px;text-align:center;padding:26px 0 60px}
-    @media(min-width:1000px){.grid{grid-template-columns:2fr 1.1fr}}
+
+    footer{
+      margin-top:clamp(32px,6vw,48px);
+      border-top:1px solid var(--line);
+      padding:22px 0 60px;text-align:center;color:var(--muted)
+    }
+    .footer-contact{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+    .footer-contact a{color:var(--accent)}
   </style>
 </head>
 <body>
   <div class="container">
     <header>
-      <div class="avatar" aria-hidden="true">
+      <div class="avatar">
         <div class="wrap">
           <img id="img1" class="active" alt="Foto real" src="./assets/photo.jpg" />
           <img id="img2" alt="Avatar" src="./assets/avatar.jpg" />
         </div>
       </div>
       <div class="title">
-        <h1>Hola, me llamo de Henry J. Vélez Torres</h1>
+        <h1>Portafolio de Henry J. Vélez Torres</h1>
         <p class="subtitle">Futuro progamador fanatico de la tecnologia que quiere salir adelante y ejercer lo que le de verdad le gusta.</p>
         <div class="badge-row">
           <span class="badge">📍 Puerto Rico</span>
@@ -68,76 +89,72 @@
       </div>
     </header>
 
-    <div class="grid">
-      <main>
-        <section>
-          <h2>Sobre mí</h2>
-          <p>Futuro progamador fanatico de la tecnologia que quiere salir adelante y ejercer lo que le de verdad le gusta.</p>
-        </section>
+    <div class="stack">
+      <section>
+        <h2>Sobre mí</h2>
+        <p>Futuro progamador fanatico de la tecnologia que quiere salir adelante y ejercer lo que le de verdad le gusta.</p>
+      </section>
 
-        <section>
-          <h2>Tecnologías</h2>
-          <div class="chips">
-            <span class="chip">C++</span>
-            <span class="chip">SQL Server</span>
-            <span class="chip">Windows Server</span>
-            <span class="chip">HTML</span>
+      <section>
+        <h2>Tecnologías</h2>
+        <div class="chips">
+          <span class="chip">C++</span>
+          <span class="chip">SQL Server</span>
+          <span class="chip">Windows Server</span>
+          <span class="chip">HTML</span>
+        </div>
+      </section>
+
+      <section>
+        <h2>Experiencia</h2>
+        <p><strong>Sistema de Salud Episcopal San Lucas (Data center) — Práctica (2025):</strong> Aprendi a realizar sustituciones de maquinas. Configuracion de equipo y de usuarios referentes. Ademas, se trabajaran tickets de servicio tecnico mediante la plataforma de space works los cuales se enfatizan en resolucion de problemas asociados a los equipos, usuarios y la red.</p>
+        <p><strong>Proyectos personales (2021–Actualidad):</strong> Programas que llegue a realizar durante mi transcurso en la universidad.</p>
+      </section>
+
+      <section>
+        <h2>Proyectos</h2>
+        <ul>
+          <li><strong>Supply Train (ST):</strong> App de delivery por suscripción en Wix.</li>
+          <li><strong>Scheduler Restaurante:</strong> Simulación de turnos y salarios en C++.</li>
+          <li><strong>Página web con base de datos:</strong> Creación de una página web con bases de datos para un dealer de carros.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Formación</h2>
+        <p><strong>Universidad Interamericana de Puerto Rico — Recinto de Ponce</strong></p>
+      </section>
+
+      <section>
+        <h2>Mis Proyectos</h2>
+        <div class="gallery">
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop" alt="Supply Train (Video)">
+            <div class="tx"><div class="t">Supply Train (Video)</div><div class="s">Video del proyecto</div></div>
           </div>
-        </section>
-
-        <section>
-          <h2>Experiencia</h2>
-          <p><strong>Sistema de Salud Episcopal San Lucas (Data center) — Práctica (2025):</strong> Aprendi a realizar sustituciones de maquinas. Configuracion de equipo y de usuarios referentes. Ademas, se trabajaran tickets de servicio tecnico mediante la plataforma de space works los cuales se enfatizan en resolucion de problemas asociados a los equipos, usuarios y la red.</p>
-          <p><strong>Proyectos personales (2021–Actualidad):</strong> Programas que llegue a realizar durante mi transcurso en la universidad.</p>
-        </section>
-
-        <section>
-          <h2>Proyectos</h2>
-          <ul>
-            <li><strong>Supply Train (ST):</strong> App de delivery por suscripción en Wix.</li>
-            <li><strong>Scheduler Restaurante:</strong> Simulación de turnos y salarios en C++.</li>
-            <li><strong>Página web con base de datos </strong> Creacion de una página web con bases de datos para un dealer de carros.</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2>Formación</h2>
-          <p><strong>Universidad Interamericana de Puerto Rico — Recinto de Ponce</strong></p>
-        </section>
-      </main>
-
-      <aside>
-        <section id="contacto">
-          <h2>Contacto</h2>
-          <p>📧 <a href="mailto:henrytorres633@gmail.com">henrytorres633@gmail.com</a></p>
-          <p><a href="https://github.com/Hjoelv" target="_blank" rel="noreferrer">GitHub: Hjoelv</a></p>
-        </section>
-
-        <section>
-          <h2>Galería</h2>
-          <div class="gallery">
-            <div class="thumb">
-              <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop" alt="Proyecto 1">
-              <div class="tx"><div class="t">Proyecto 1</div><div class="s">Placeholder</div></div>
-            </div>
-            <div class="thumb">
-              <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1200&auto=format&fit=crop" alt="Proyecto 2">
-              <div class="tx"><div class="t">Proyecto 2</div><div class="s">Placeholder</div></div>
-            </div>
-            <div class="thumb">
-              <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop" alt="Proyecto 3">
-              <div class="tx"><div class="t">Proyecto 3</div><div class="s">Placeholder</div></div>
-            </div>
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop" alt="Proyecto Visual Studio 1">
+            <div class="tx"><div class="t">Proyecto VS 1</div><div class="s">Aplicación C#/UI</div></div>
           </div>
-        </section>
-      </aside>
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1581276879432-15a6c7e11fa7?q=80&w=1200&auto=format&fit=crop" alt="Proyecto Visual Studio 2">
+            <div class="tx"><div class="t">Proyecto VS 2</div><div class="s">API / Backend</div></div>
+          </div>
+        </div>
+      </section>
     </div>
 
-    <footer>© <span id="year"></span> Henry J. Vélez Torres — Portafolio</footer>
+    <footer>
+      <div class="footer-contact">
+        <span>📧 <a href="mailto:henrytorres633@gmail.com">henrytorres633@gmail.com</a></span>
+        <span>•</span>
+        <a href="https://github.com/Hjoelv" target="_blank" rel="noreferrer">GitHub: Hjoelv</a>
+      </div>
+      <div>© <span id="year"></span> Henry J. Vélez Torres — Portafolio</div>
+    </footer>
   </div>
 
   <script>
-    // Alterna avatar/foto cada 8 segundos
     const img1 = document.getElementById('img1');
     const img2 = document.getElementById('img2');
     let showFirst = true;
@@ -147,12 +164,11 @@
       showFirst = !showFirst;
     }, 8000);
 
-    // Botón CV: abrir y descargar
     const cvBtn = document.getElementById('cvBtn');
     cvBtn.addEventListener('click', (e)=>{
       const url = cvBtn.getAttribute('href');
-      window.open(url, '_blank', 'noopener'); // abre nueva pestaña
-      const a = document.createElement('a');   // dispara descarga
+      window.open(url, '_blank', 'noopener');
+      const a = document.createElement('a');
       a.href = url;
       a.setAttribute('download', 'Henry_Velez_CV.pdf');
       document.body.appendChild(a);
@@ -165,3 +181,14 @@
   </script>
 </body>
 </html>
+"""
+
+with open(os.path.join(base, "index.html"), "w", encoding="utf-8") as f:
+    f.write(index_html)
+
+# Prepare LICENSE, README, .gitignore
+readme = """# Portafolio de Henry J. Vélez Torres
+
+Portafolio estático responsive con animación (avatar ↔ foto), estilo oscuro, acentos rojos, botón “Ver y descargar mi CV” y sección “Mis Proyectos”.
+
+## Estructura
